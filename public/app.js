@@ -24,4 +24,16 @@ function fetchData(postCode) {
     }) 
 }
 
+// Function that displays the data on the page
+function displayData(postCode, jsonData) {
+  const locationElement = document.getElementById("location");
+  //const rows = jsonData.rows
+  //const columns = jsonData["column-names"]
+  locationElement.textContent = `Data for ${postCode}: ${jsonData}`;
+}
+
+// Calling fetchData for default postcode
 fetchData("SL1 5BW")
+  .then((jsonData) => {
+    displayData("SL1 5BW", jsonData)
+  })
