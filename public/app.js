@@ -17,7 +17,8 @@ function fetchData(postCode) {
   return fetch(apiUrl, {headers})
     .then((response) => response.json())
     .then((jsonData) => {
-      console.log(jsonData)
+      console.log(jsonData);
+      return jsonData;
     })
     .catch((error) => {
         console.error("Cannot fetch data", error)
@@ -25,15 +26,22 @@ function fetchData(postCode) {
 }
 
 // Function that displays the data on the page
-function displayData(postCode, jsonData) {
+function displayData(postCode, data) {
   const locationElement = document.getElementById("location");
-  //const rows = jsonData.rows
-  //const columns = jsonData["column-names"]
-  locationElement.textContent = `Data for ${postCode}: ${jsonData}`;
+  const rows = data.rows
+
+  let addresses = "";
+
+  for (let i = 0; i < rows.length; i++) {
+    addresses += `${rows[i]["address"]}, `;
+  }
+
+  addresses = addresses.slice(0, -2);
+  locationElement.textContent = `Data for ${postCode}: ${addresses}`;
 }
 
 // Calling fetchData for default postcode
 fetchData("SL1 5BW")
-  .then((jsonData) => {
-    displayData("SL1 5BW", jsonData)
+  .then((data) => {
+    displayData("SL1 5BW", data)
   })
