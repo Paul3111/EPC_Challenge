@@ -57,8 +57,10 @@ fetchData("SL1 5BW")
     displayData("SL1 5BW", data)
   })
 
-const fetchButton = document.getElementById("button")
-fetchButton.addEventListener("click", () => {
+// Form that allows user to enter a post code
+function handleFormSubmit(event) {
+  event.preventDefault();
+
   const postCodeInput = document.getElementById("inputBox");
   const postCode = postCodeInput.value;
 
@@ -67,4 +69,7 @@ fetchButton.addEventListener("click", () => {
       displayData(postCode, data)
       postCodeInput.value = ""
   })
-})
+}
+
+const form = document.getElementById("form");
+form.addEventListener("submit", handleFormSubmit)

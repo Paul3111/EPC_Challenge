@@ -18,9 +18,11 @@ width: 30rem;
 #header {
   border: 2px solid black;
   border-radius: 12px;
+  width: 10rem;
   font-size: 16px;
   font-weight: bold;
   padding: 8px;
+  margin-bottom: 10px;
 }
 
 #form {
