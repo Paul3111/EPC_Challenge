@@ -88,7 +88,6 @@ function displayFullDetails(postCode, data, index) {
 
   const selectedRow = data.rows[index];
   const fullDetailsDiv = document.createElement("div");
-  //fullDetailsDiv.classList.add("full-details");
 
   for (const field in selectedRow) {
     const detailDiv = document.createElement("div");
