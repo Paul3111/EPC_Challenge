@@ -17,3 +17,25 @@ width: 30rem;
   font-weight: bold;
   padding: 8px;
 }
+
+#form {
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+#inputBox {
+  width: 27rem;
+  height: 2rem;
+  border: 2px solid orange;
+  border-radius: 12px;
+}
+
+#button {
+  height: 2rem;
+  border: 2px solid orange;
+  border-radius: 12px;
+  background-color: lightblue;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}

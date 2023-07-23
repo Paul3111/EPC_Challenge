@@ -35,7 +35,7 @@ function displayData(postCode, data) {
   const divs = document.createElement("div")
 
   headerElement.textContent = `Data for: ${postCode}`
-  
+
   rows.forEach((row) => {
     const elementDiv = document.createElement("div"); // Creates a div for each item
     elementDiv.textContent = row["address"];
@@ -51,3 +51,15 @@ fetchData("SL1 5BW")
   .then((data) => {
     displayData("SL1 5BW", data)
   })
+
+const fetchButton = document.getElementById("button")
+fetchButton.addEventListener("click", () => {
+  const postCodeInput = document.getElementById("inputBox");
+  const postCode = postCodeInput.value;
+
+  fetchData(postCode)
+    .then((data) => {
+      displayData(postCode, data)
+      postCodeInput.value = ""
+  })
+})
