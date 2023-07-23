@@ -30,7 +30,7 @@ function displayData(postCode, data) {
   const locationElement = document.getElementById("location");
   const rows = data.rows
   const headerElement = document.getElementById("header")
-  
+
   // Creating a container div to hold all div elements
   const divs = document.createElement("div")
 
@@ -39,7 +39,7 @@ function displayData(postCode, data) {
   rows.forEach((row) => {
     const elementDiv = document.createElement("div"); // Creates a div for each item
     elementDiv.textContent = row["address"];
-    elementDiv.classList.add("element-div")
+    elementDiv.classList.add("element-div");
 
     elementDiv.addEventListener("click", () => {
       console.log(`Selected ${row["address"]}`)
@@ -57,9 +57,13 @@ fetchData("SL1 5BW")
     displayData("SL1 5BW", data)
   })
 
-// Form that allows user to enter a post code
+  // Form that allows user to enter a post code
 function handleFormSubmit(event) {
   event.preventDefault();
+
+  // Clearing the items to prevent new data stacking onto the old one
+  const locationElement = document.getElementById("location")
+  locationElement.innerHTML= ""
 
   const postCodeInput = document.getElementById("inputBox");
   const postCode = postCodeInput.value;
