@@ -40,6 +40,11 @@ function displayData(postCode, data) {
     const elementDiv = document.createElement("div"); // Creates a div for each item
     elementDiv.textContent = row["address"];
     elementDiv.classList.add("element-div")
+
+    elementDiv.addEventListener("click", () => {
+      console.log(`Selected ${row["address"]}`)
+    })
+
     divs.appendChild(elementDiv); // Appends the item div to div container
   })
 

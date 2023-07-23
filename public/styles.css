@@ -10,6 +10,11 @@ width: 30rem;
   margin-top: 2px;
 }
 
+.element-div:hover {
+  cursor: pointer;
+  color: orangered;
+}
+
 #header {
   border: 2px solid black;
   border-radius: 12px;
