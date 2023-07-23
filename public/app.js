@@ -10,18 +10,18 @@ function fetchData(postCode) {
   const encodedAuthData = encode(`${email}:${apiKey}`);
   const apiUrl = `https://epc.opendatacommunities.org/api/v1/domestic/search?postcode=${postCode}`;
   const headers = {
-    "Accept": "text/csv",
+    "Accept": "application/json",
     "Authorization": `Basic ${encodedAuthData}`
   }
 
   return fetch(apiUrl, {headers})
-    .then((response) => response.text())
-    .then((csvData) => {
-      console.log(csvData)
+    .then((response) => response.json())
+    .then((jsonData) => {
+      console.log(jsonData)
     })
     .catch((error) => {
         console.error("Cannot fetch data", error)
     }) 
 }
 
-fetchData("SL1")
+fetchData("SL1 5BW")
