@@ -26,7 +26,7 @@ function fetchData(postCode) {
 }
 
 // Function that displays the data on the page
-function displayData(postCode, data) {
+function displayData(postCode, data, index = "") {
   const locationElement = document.getElementById("location");
   const rows = data.rows
   const headerElement = document.getElementById("header")
@@ -36,13 +36,14 @@ function displayData(postCode, data) {
 
   headerElement.textContent = `Data for: ${postCode}`
 
-  rows.forEach((row) => {
+  rows.forEach((row, i) => {
     const elementDiv = document.createElement("div"); // Creates a div for each item
     elementDiv.textContent = row["address"];
     elementDiv.classList.add("element-div");
 
     elementDiv.addEventListener("click", () => {
       console.log(`Selected ${row["address"]}`)
+      displayFullDetails(postCode, data, i)
     })
 
     divs.appendChild(elementDiv); // Appends the item div to div container
@@ -61,7 +62,7 @@ fetchData("SL1 5BW")
 function handleFormSubmit(event) {
   event.preventDefault();
 
-  // Clearing the items to prevent new data stacking onto the old one
+  // Clearing the items to prevent new data from stacking onto the old one
   const locationElement = document.getElementById("location")
   locationElement.innerHTML= ""
 
@@ -77,3 +78,29 @@ function handleFormSubmit(event) {
 
 const form = document.getElementById("form");
 form.addEventListener("submit", handleFormSubmit)
+
+// Function that displays full details for selected address
+function displayFullDetails(postCode, data, index) {
+
+  // Clearing the items to prevent new data from stacking onto the old one
+  const locationElement = document.getElementById("location")
+  locationElement.innerHTML= ""
+
+  const selectedRow = data.rows[index];
+  const fullDetailsDiv = document.createElement("div");
+  //fullDetailsDiv.classList.add("full-details");
+
+  for (const field in selectedRow) {
+    const detailDiv = document.createElement("div");
+    detailDiv.classList.add("line-detail")
+    detailDiv.innerHTML = `<strong>${field}:</strong> ${selectedRow[field]}`;
+    fullDetailsDiv.appendChild(detailDiv);
+  }
+
+  locationElement.appendChild(fullDetailsDiv);
+}
+
+const resetButton = document.getElementById("reset-button")
+resetButton.addEventListener("click", () => {
+  location.reload();
+})
