@@ -1,3 +1,11 @@
 #location {
+width: 30rem;
+}
+
+.element-div {
   font-weight: bold;
+  border: 2px solid lightblue;
+  border-radius: 12px;
+  padding: 10px;
+  margin-top: 2px;
 }

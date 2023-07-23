@@ -30,14 +30,17 @@ function displayData(postCode, data) {
   const locationElement = document.getElementById("location");
   const rows = data.rows
 
-  let addresses = "";
+  // Creating a container div to hold all div elements
+  const divs = document.createElement("div")
 
-  for (let i = 0; i < rows.length; i++) {
-    addresses += `${rows[i]["address"]}, `;
-  }
+  rows.forEach((row) => {
+    const elementDiv = document.createElement("div"); // Creates a div for each item
+    elementDiv.textContent = row["address"];
+    elementDiv.classList.add("element-div")
+    divs.appendChild(elementDiv); // Appends the item div to div container
+  })
 
-  addresses = addresses.slice(0, -2);
-  locationElement.textContent = `Data for ${postCode}: ${addresses}`;
+  locationElement.appendChild(divs);
 }
 
 // Calling fetchData for default postcode
