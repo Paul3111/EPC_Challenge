@@ -29,10 +29,13 @@ function fetchData(postCode) {
 function displayData(postCode, data) {
   const locationElement = document.getElementById("location");
   const rows = data.rows
-
+  const headerElement = document.getElementById("header")
+  
   // Creating a container div to hold all div elements
   const divs = document.createElement("div")
 
+  headerElement.textContent = `Data for: ${postCode}`
+  
   rows.forEach((row) => {
     const elementDiv = document.createElement("div"); // Creates a div for each item
     elementDiv.textContent = row["address"];
