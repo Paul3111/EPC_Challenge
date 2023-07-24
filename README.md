@@ -27,8 +27,10 @@ A light app that fetches data from the Energy Performance Certificates API based
 ## How to use
 
 1. Clone this repository to your local machine.
-2. Navigate to the project directory.
+2. Navigate to the project directory using the following command:
+  cd public
 3. Open the "index.html" file in your browser.
+  open index.html (or start .\index.html, if using powershell)
 4. There are no dependencies that need installing.
 
 ## Features
